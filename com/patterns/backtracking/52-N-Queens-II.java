@@ -24,12 +24,25 @@ import java.util.Set;
  * 
  *  NOTE: Utilizes clever trick from LC solution. You can check if a square is on the same diagonal as another by either
  *  adding the row to the column of each or subtracting the row from the column of each. If they match, they are on the 
- *  same "hill" (slowing upwards) diagonal or "dale" (sloping downwards) anti-diagonal.
+ *  same diagonal ([0][0]..[N][N]) or anti-diagonal ([0][N]..[N][0]).
+ *  
+ *  https://www.chessprogramming.org/Diagonals
+ *  https://www.chessprogramming.org/Anti-Diagonals
  * 
+*
+ *          Col
+ *    Row    0   1   2   3   4
+ *        xxxxxxxxxxxxxxxxxxxx      "hill" diagonal (row - column)
+ *     0  x  0  -1  -2  -3  -4
+ *     1  x  1   0  -1  -2  -3
+ *     2  x  2   1   0  -1  -2
+ *     3  x  3   2   1   0  -1
+ *     4  x  4   3   2   1   0
+ *        xxxxxxxxxxxxxxxxxxxx
  * 
  *          Col
  *    Row    0   1   2   3   4
- *        xxxxxxxxxxxxxxxxxxxx       "hill" anti-diagonal (row + column)
+ *        xxxxxxxxxxxxxxxxxxxx       "dale" anti-diagonal (row + column)
  *     0  x  0   1   2   3   4
  *     1  x  1   2   3   4   5
  *     2  x  2   3   4   5   6
@@ -37,16 +50,7 @@ import java.util.Set;
  *     4  x  4   5   6   7   8
  *        xxxxxxxxxxxxxxxxxxxx
  * 
- *
- *          Col
- *    Row    0   1   2   3   4
- *        xxxxxxxxxxxxxxxxxxxx      "dale" diagonal (row - column)
- *     0  x  0  -1  -2  -3  -4
- *     1  x  1   0  -1  -2  -3
- *     2  x  2   1   0  -1  -2
- *     3  x  3   2   1   0  -1
- *     4  x  4   3   2   1   0
- *        xxxxxxxxxxxxxxxxxxxx
+
  */
 class Solution {
     private int count;
